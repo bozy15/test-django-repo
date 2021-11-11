@@ -17,6 +17,7 @@ import dj_database_url
 
 # If theres environment varible called DEVELOPMENT this variable will be True
 # otherwise it will be False
+os.environ.get("DEVELOPMENT", True)
 development = os.environ.get("DEVELOPMENT", False)
 
 
@@ -29,10 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = (
-    os.environ.get(
-        "SECRET_KEY",
-        "django-insecure--d7tzn_r21)!jcy1ghm5zh&m3^7$8$k6xm_ls&uaa2$je$!@g*",
-    ),
+    os.environ.get("SECRET_KEY",
+    "django-insecure--d7tzn_r21)!jcy1ghm5zh&m3^7$8$k6xm_ls&uaa2$je$!@g*"),
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -43,10 +42,7 @@ DEBUG = development
 if development:
     ALLOWED_HOSTS = ["localhost"]
 else:
-    ALLOWED_HOSTS = [
-        os.environ.get("HEROKU_HOSTNAME"),
-        "test-django-repo.herokuapp.com",
-    ]
+    ALLOWED_HOSTS = [os.environ.get("HEROKU_HOSTNAME"), "test-django-repo.herokuapp.com"]
 
 
 # Application definition
@@ -104,9 +100,7 @@ if development:
     }
 else:
     DATABASES = {
-        "default": dj_database_url.parse(
-            "postgres://ssmuumsuvetzsw:3fce6492261b131c45e3eb55fd646ebcb672b9869318afb1a0cb59d2ee42e3ca@ec2-54-171-25-232.eu-west-1.compute.amazonaws.com:5432/d3nfigi9gn3obd"
-        )
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
 
