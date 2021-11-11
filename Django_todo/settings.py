@@ -42,7 +42,7 @@ SECRET_KEY = (
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ["localhost"]
+    ALLOWED_HOSTS = ["127.0.0.1"]
 else:
     ALLOWED_HOSTS = [os.environ.get("HEROKU_HOSTNAME"), "test-django-repo.herokuapp.com"]
 
