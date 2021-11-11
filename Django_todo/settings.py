@@ -14,11 +14,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # If theres environment varible called DEVELOPMENT this variable will be True
 # otherwise it will be False
-os.environ.get("DEVELOPMENT", True)
-development = os.environ.get("DEVELOPMENT", False)
+development = os.environ.get('DEVELOPMENT', False)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
